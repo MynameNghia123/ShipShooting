@@ -6,7 +6,7 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField] protected float speed = 5.0f; 
     [SerializeField] protected Vector3 targetPosition;
-    void FixedUpdate()
+    void Update()
     {
         this.GetTargetPosition();
         this.LookAtTarget();
@@ -25,8 +25,8 @@ public class ShipMovement : MonoBehaviour
                                                                              // để giữ lại hướng đi ban đầu
          float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;           // Mathf.Atan2: trả về radian Tan của y và x
                                                                              // Mathf.Rad2Deg trả về 1 radian = ? degree
-        transform.parent.rotation = Quaternion.Euler(0f, 0f,  rot_z + 90);   // phép xoay
-                                                                                     // + 90 do model bên ngoài bị lệch -90 
+        transform.parent.rotation = Quaternion.Euler(0f, 0f,  rot_z);   // phép xoay
+                                                                                    
     }
     protected virtual void Moving()
     {
