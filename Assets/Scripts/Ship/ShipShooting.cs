@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShipShooting : MonoBehaviour
@@ -8,7 +9,6 @@ public class ShipShooting : MonoBehaviour
     [SerializeField] protected bool isShooting = false;
     [SerializeField] protected float ShootTimer = 0f;
     [SerializeField] protected float ShootingDelay = 1f;
-    [SerializeField] protected Transform bulletPrefab;
     private void Update()
     {
         this.IsShooting();    
@@ -30,7 +30,8 @@ public class ShipShooting : MonoBehaviour
 
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
-        Instantiate(this.bulletPrefab, spawnPos, rotation);
+        Transform bulletObj = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.bulletOne, spawnPos, rotation);
+        bulletObj.gameObject.SetActive(true);
         Debug.Log("Shooting");
     }
     protected virtual bool IsShooting()
