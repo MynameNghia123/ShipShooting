@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletFly : MonoBehaviour
+public class BulletFly : ObjectFly
 {
-    [SerializeField] protected float speed = 1.0f;
-    [SerializeField] protected Vector3 direction = Vector3.right;
-    private void Update()
+    protected override void ResetValue()
     {
-        transform.parent.Translate(this.direction * this.speed * Time.deltaTime); 
+        base.ResetValue();
+        this.speed = 7.0f;
     }
 }

@@ -12,13 +12,11 @@ public abstract class Spawner : SaiMonoBehavior
         base.Awake();
         this.HidePrefabs();
     }
-
     protected override void LoadComponent()
     {
         this.LoadPrefabs();
         this.LoadHoder();
     }
-
     protected virtual void LoadHoder()
     {
         if (this.holder != null) return;
@@ -37,7 +35,6 @@ public abstract class Spawner : SaiMonoBehavior
         }
         Debug.Log(transform.name + " :loadPrefabs ");
     }
-
     protected virtual void HidePrefabs()
     {
         foreach (Transform prefab in prefabs)
