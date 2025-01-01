@@ -15,6 +15,10 @@ public class SaiMonoBehavior : MonoBehaviour
         this.LoadComponent();
         this.ResetValue();
     }
+    protected virtual void Start()
+    {
+        // for ovveride
+    }
     protected virtual void LoadComponent()
     {
         // for ovveride

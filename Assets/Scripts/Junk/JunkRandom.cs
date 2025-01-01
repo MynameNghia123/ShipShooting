@@ -18,15 +18,17 @@ public class JunkRandom : SaiMonoBehavior
         Debug.Log(transform.name + ": LoadJunkCtrl", gameObject);
     }
 
-    protected virtual void Start()
+    protected override void Start()
     {
         this.JunkSpawning();
     }
     protected virtual void JunkSpawning()
     {
         Transform rand = junkSpawnCtrl.JunkSpawnPoints.GetRandom();
+
         Vector3 pos = rand.position;
         Quaternion ros = rand.rotation;
+
         Transform trans = this.junkSpawnCtrl.JunkSpawner.Spawn(JunkSpawner.junkOne, pos, ros);
         trans.gameObject.SetActive(true);
 
