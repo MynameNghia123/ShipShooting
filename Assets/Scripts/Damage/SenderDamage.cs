@@ -11,7 +11,7 @@ public class SenderDamage : SaiMonoBehavior
         RecieverDamage dameReciever = obj.GetComponentInChildren<RecieverDamage>();
         if (dameReciever == null)
         {
-            Debug.Log(transform.name + ": Dame Reciever null", gameObject);
+            Debug.LogWarning(transform.name + ": Dame Reciever null", gameObject);
             return;
         }
         this.Send(dameReciever);
@@ -19,10 +19,5 @@ public class SenderDamage : SaiMonoBehavior
     public virtual void Send(RecieverDamage recieverDamage)
     {
         recieverDamage.Deduct(this.dame);
-        this.DestroyObject();
-    }
-    protected virtual void DestroyObject()
-    {
-        Destroy(transform.parent.gameObject);
     }
 }

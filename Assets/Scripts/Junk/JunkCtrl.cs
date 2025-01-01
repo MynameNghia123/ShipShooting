@@ -5,11 +5,19 @@ using UnityEngine;
 public class JunkCtrl : SaiMonoBehavior
 {
     [SerializeField] protected Transform model;
-
+    [SerializeField] protected JunkDespawn junkDespawn;
+    public JunkDespawn JunkDespawn { get => junkDespawn;  }
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadModel();
+        this.LoadJunkDespawn();
+    }
+    protected virtual void LoadJunkDespawn()
+    {
+        if (junkDespawn != null) return;
+        junkDespawn = GetComponentInChildren<JunkDespawn>();
+        Debug.Log(transform.name + ": Load Junk Despawn", gameObject);
     }
     protected virtual void LoadModel()
     {
@@ -22,3 +30,4 @@ public class JunkCtrl : SaiMonoBehavior
         return model;
     }
 }
+ 
