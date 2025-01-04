@@ -39,6 +39,14 @@ public class BulletImpact : BulletAbstract
     protected virtual void CreateImpactFX(Collider other)
     {
         string nameFx = getImpactFX();
+
+
+        //Vector3 hitPos = transform.position;
+        //Quaternion hitRot = transform.rotation;
+        //Transform fxImpact = FXSpawner.Instance.Spawn(nameFx, hitPos, hitRot);
+        //fxImpact.gameObject.SetActive(true);
+
+
         Vector3 pos = transform.position;
         Quaternion ros = transform.rotation;
         Quaternion rotationEffect = Quaternion.Euler(0, 0, -90);

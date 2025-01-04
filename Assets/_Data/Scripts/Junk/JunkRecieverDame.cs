@@ -22,8 +22,18 @@ public class JunkRecieverDame : RecieverDamage
 
     protected override void OnDead()
     {
+        //The Animation of junk which is destroy by something
         this.OnDeadFX();
+        //Collect Junk into pooling object
         this.junkCtrl.JunkDespawn.DespawnObject();
+        // Drop Item
+        this.OnDeadDrop();
+    }
+    protected virtual void OnDeadDrop()
+    {
+        Vector3 dropPos = transform.position;
+        Quaternion dropRot = transform.rotation;
+        ItemDropSpawner.Instance.Drop(this.junkCtrl.JunkSO.dropList, dropPos, dropRot);
     }
     protected virtual void OnDeadFX()
     {

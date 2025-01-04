@@ -32,7 +32,7 @@ public class ShipShooting : MonoBehaviour
         Quaternion rotation = transform.parent.rotation;
         Transform bulletObj = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.bulletOne, spawnPos, rotation);
         bulletObj.gameObject.SetActive(true);
-        Debug.Log("Shooting");
+        //Debug.Log("Shooting");
     }
     protected virtual bool IsShooting()
     {

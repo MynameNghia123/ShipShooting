@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1beb1b1950a22a49b55540366a1aefd, type: 3}
-  m_Name: Junk
+  m_Script: {fileID: 11500000, guid: 8f3f9d17434835542a9ede1955812b8b, type: 3}
+  m_Name: IronOre
   m_EditorClassIdentifier: 
-  junkName: Junk
-  maxHp: 2
+  codeItem: 1
+  itemName: IronMan
