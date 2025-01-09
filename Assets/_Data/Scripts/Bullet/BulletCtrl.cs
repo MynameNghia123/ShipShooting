@@ -9,6 +9,8 @@ public class BulletCtrl : SaiMonoBehavior
 
     [SerializeField] protected BulletDespawn bulletDespawn;
     public BulletDespawn BulletDespawn { get => bulletDespawn; }
+    [SerializeField] protected Transform shooter;
+    public Transform Shooter { get => shooter; }
     protected override void LoadComponent()
     {
         base.LoadComponent();

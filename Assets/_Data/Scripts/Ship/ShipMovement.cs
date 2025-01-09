@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    [SerializeField] protected float speed = 5.0f; 
-    [SerializeField] protected Vector3 targetPosition;
 
-    protected void FixedUpdate()
+    [SerializeField] protected Vector3 targetPosition;
+    [SerializeField] protected float speed = 0.01f;
+
+    void FixedUpdate()
     {
         this.GetTargetPosition();
-        this.LookAtTarget();
+        this.LootAtTarget();
         this.Moving();
     }
 
@@ -19,19 +20,18 @@ public class ShipMovement : MonoBehaviour
         this.targetPosition = InputManager.Instance.MouseWorldPos;
         this.targetPosition.z = 0;
     }
-    protected virtual void LookAtTarget()
+
+    protected virtual void LootAtTarget()
     {
-        Vector3 diff = this.targetPosition - this.transform.parent.position; // tính tọa độ hướng đi
-        diff.Normalize();                                                    // chuản hóa Vector đưa dộ lớn về 1 
-                                                                             // để giữ lại hướng đi ban đầu
-         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;           // Mathf.Atan2: trả về radian Tan của y và x
-                                                                             // Mathf.Rad2Deg trả về 1 radian = ? degree
-        transform.parent.rotation = Quaternion.Euler(0f, 0f,  rot_z);   // phép xoay
-                                                                                    
+        Vector3 diff = this.targetPosition - transform.parent.position;
+        diff.Normalize();
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        transform.parent.rotation = Quaternion.Euler(0f, 0f, rot_z);
     }
+
     protected virtual void Moving()
     {
-        Vector3 newPos = Vector3.Lerp(transform.parent.position, this.targetPosition, this.speed * Time.deltaTime);
+        Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.speed);
         transform.parent.position = newPos;
     }
 }

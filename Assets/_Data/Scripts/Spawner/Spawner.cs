@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class Spawner : SaiMonoBehavior
 {
-    [SerializeField] private Transform holder;
+    [SerializeField] protected Transform holder;
 
     [SerializeField] protected int spawnedCount = 0;
     public int SpawnedCount => spawnedCount;
 
-    [SerializeField] private List<Transform> prefabs;
-    [SerializeField] private List<Transform> poolObjs;
+    [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] protected List<Transform> poolObjs;
 
     protected override void Awake()
     {
@@ -37,6 +37,7 @@ public abstract class Spawner : SaiMonoBehavior
         foreach (Transform prefab in prefabObj)
         {
             prefabs.Add(prefab);
+            Debug.Log(prefab.name + " :loadPrefabs ");
         }
         Debug.Log(transform.name + " :loadPrefabs ");
     }
@@ -45,6 +46,7 @@ public abstract class Spawner : SaiMonoBehavior
         foreach (Transform prefab in prefabs)
         {
             prefab.gameObject.SetActive(false);
+            Debug.Log(transform.name + " :loadPrefabs ");
         }
     }
 
