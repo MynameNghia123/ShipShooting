@@ -8,20 +8,20 @@ public class JunkCtrl : SaiMonoBehavior
     public Transform Model { get => model; }
     [SerializeField] protected JunkDespawn junkDespawn;
     public JunkDespawn JunkDespawn { get => junkDespawn;  }
-    [SerializeField] protected JunkSO junkSO;
-    public JunkSO JunkSO => junkSO;
+    [SerializeField] protected ShootableObjectSO shootableObject;
+    public ShootableObjectSO ShootableObject => shootableObject;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadModel();
-        this.LoadJunkDespawn();
-        this.LoadJunkSO();
+        this.LoadDespawn();
+        this.LoadShootableObjectSO();
     }
-    protected virtual void LoadJunkDespawn()
+    protected virtual void LoadDespawn()
     {
         if (junkDespawn != null) return;
         junkDespawn = GetComponentInChildren<JunkDespawn>();
-        Debug.Log(transform.name + ": Load Junk Despawn", gameObject);
+        Debug.Log(transform.name + ": Load Despawn", gameObject);
     }
     protected virtual void LoadModel()
     {
@@ -29,11 +29,11 @@ public class JunkCtrl : SaiMonoBehavior
         model = transform.Find("model");
         Debug.Log(transform.name + ": LoadModel", gameObject);
     }
-    protected virtual void LoadJunkSO()
+    protected virtual void LoadShootableObjectSO()
     {
-        if (this.junkSO != null) return;
-        string resPath = "Junk/" + transform.name;
-        this.junkSO = Resources.Load<JunkSO>(resPath);
+        if (this.shootableObject != null) return;
+        string resPath = "ShootableObject/Junk/" + transform.name;
+        this.shootableObject = Resources.Load<ShootableObjectSO>(resPath);
         Debug.LogWarning(transform.name + ": LoadJunkSO", gameObject);
     }
 }

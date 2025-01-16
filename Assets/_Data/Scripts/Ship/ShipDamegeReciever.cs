@@ -6,7 +6,7 @@ public class ShipDamegeReciever : RecieverDamage
 {
     protected override void OnDead()
     {
-        throw new System.NotImplementedException();
+        return;
     }
   
 

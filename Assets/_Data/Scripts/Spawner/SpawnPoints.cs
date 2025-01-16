@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  abstract class SpawnPoints : SaiMonoBehavior
+public class SpawnPoints : SaiMonoBehavior
 {
     [SerializeField] protected List<Transform> Points;
     protected override void LoadComponent()

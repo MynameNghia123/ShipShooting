@@ -29,4 +29,8 @@ public class BulletCtrl : SaiMonoBehavior
         this.bulletDespawn = GetComponentInChildren<BulletDespawn>();
         Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
     }
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.shooter = shooter;
+    }
 }

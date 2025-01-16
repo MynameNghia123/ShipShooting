@@ -18,7 +18,7 @@ public class JunkFly : ObjectFly
     }
     protected virtual void GetFlyDirection()
     {
-        Vector3 camPos = GameCtrl.Instance.GetCamera().transform.position;
+        Vector3 camPos = GetCamPos();
         Vector3 objPos = transform.parent.position;
 
         camPos.x += Random.Range(minRan, maxRan);
@@ -33,5 +33,11 @@ public class JunkFly : ObjectFly
        // this.direction = (camPos - transform.position).normalized;
 
       //  Debug.DrawLine(objPos, objPos + diff * 7, Color.red, Mathf.Infinity);
+    }
+    protected virtual Vector3 GetCamPos()
+    {
+        if (GameCtrl.Instance == null) return Vector3.zero;
+        Vector3 camPos = GameCtrl.Instance.GetCamera().transform.position;
+        return camPos;
     }
 }

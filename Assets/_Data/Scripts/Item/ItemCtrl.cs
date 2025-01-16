@@ -9,6 +9,11 @@ public class ItemCtrl : SaiMonoBehavior
     [SerializeField] protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ResetItem();
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -22,7 +27,8 @@ public class ItemCtrl : SaiMonoBehavior
     }
     public virtual void SetItemInventory(ItemInventory itemInventory)
     {
-        this.itemInventory = itemInventory;
+        this.itemInventory = new ItemInventory(itemInventory.itemProfile, itemInventory.itemCount, itemInventory.maxStack, itemInventory.upgradeLevel);
+
     }
     protected virtual void LoadItemInventory()
     {
@@ -30,7 +36,12 @@ public class ItemCtrl : SaiMonoBehavior
         ItemCode itemCode = ItemCodeParse.FromString(transform.name);
         ItemProfileSO itemProfile = ItemProfileSO.FindByItemCode(itemCode);
         this.itemInventory.itemProfile = itemProfile;
-        this.itemInventory.itemCount = 1;
+        this.ResetItem();
         Debug.Log(transform.name + ": Load Item Inventory", gameObject);
+    }
+    protected virtual void ResetItem()
+    {
+        ItemInventory itemInventory = new ItemInventory(this.itemInventory.itemProfile, 1, this.itemInventory.maxStack, 0); ;
+        this.itemInventory = itemInventory;
     }
 }

@@ -35,4 +35,8 @@ public class SenderDamage : SaiMonoBehavior
     {
         return FXSpawner.impact_one;
     }
+    public virtual void SetDamage(int damage)
+    {
+        this.dame = damage;
+    }
 }

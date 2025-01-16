@@ -16,8 +16,8 @@ public class ItemInventoryDrop : InventoryAbstract
     protected virtual void DropItemIndex(int itemIndex)
     {
         ItemInventory itemInventory = inventory.Items[itemIndex];
-        Debug.Log(itemInventory.itemProfile.itemCode);
-        Debug.Log(itemInventory.upgradeLevel);
+        //Debug.Log(itemInventory.itemProfile.itemCode);
+        //Debug.Log(itemInventory.upgradeLevel);
 
         Vector3 pos = transform.position;
         pos.x += 1;

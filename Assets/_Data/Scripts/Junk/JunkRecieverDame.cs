@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +33,7 @@ public class JunkRecieverDame : RecieverDamage
     {
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(this.junkCtrl.JunkSO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(this.junkCtrl.ShootableObject.dropList, dropPos, dropRot);
     }
     protected virtual void OnDeadFX()
     {
@@ -47,7 +47,7 @@ public class JunkRecieverDame : RecieverDamage
     }
     public override void Reborn()
     {
-        this.hpMax = junkCtrl.JunkSO.maxHp;
+        this.hpMax = junkCtrl.ShootableObject.maxHp;
         base.Reborn();
     }
 }

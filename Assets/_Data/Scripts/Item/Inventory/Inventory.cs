@@ -24,9 +24,12 @@ public class Inventory : SaiMonoBehavior
         if(itemType == ItemType.Equipment) return this.AddItemEquidment(itemInventory);
         return AddItem(itemCode, addCount);
     }
-    protected virtual bool AddItemEquidment(ItemInventory itemInventory)
+    protected virtual bool AddItemEquidment(ItemInventory itemPicked)
     {
         if(this.IsInventoryFull()) return false;
+
+        ItemInventory itemInventory = new ItemInventory(itemPicked.itemProfile, itemPicked.itemCount, itemPicked.maxStack, itemPicked.upgradeLevel);
+
         this.items.Add(itemInventory);
 
         return true;

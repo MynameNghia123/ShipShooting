@@ -7,8 +7,8 @@ public class JunkSpawnCtrl : SaiMonoBehavior
     [SerializeField] protected JunkSpawner junkSpawner;
     public JunkSpawner JunkSpawner { get => junkSpawner; }
 
-    [SerializeField] protected JunkSpawnPoints junkSpawnPoints;
-    public JunkSpawnPoints JunkSpawnPoints { get =>  junkSpawnPoints; }
+    [SerializeField] protected SpawnPoints junkSpawnPoints;
+    public SpawnPoints JunkSpawnPoints { get =>  junkSpawnPoints; }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -18,7 +18,8 @@ public class JunkSpawnCtrl : SaiMonoBehavior
     protected virtual void LoadJunkSpawnPonts()
     {
         if (this.junkSpawnPoints != null) return;
-        junkSpawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
+        GameObject spawnPoint = GameObject.Find("JunkSpawnerPoints");
+        junkSpawnPoints = spawnPoint.GetComponent<SpawnPoints>();
         Debug.Log(transform.name + ": LoadJunkSpawnPonts", gameObject);
     }
     protected virtual void LoadJunkSpawner()
