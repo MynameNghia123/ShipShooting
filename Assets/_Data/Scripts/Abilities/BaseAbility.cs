@@ -10,18 +10,22 @@ public abstract class BaseAbility : SaiMonoBehavior
     public Abilities Abilities => abilities;
     [SerializeField] protected float timer = 2.0f;
     [SerializeField] protected float delay = 2.0f;
-    [SerializeField] protected bool isRead = false;
+    [SerializeField] protected bool isReady = false;
 
     protected virtual void FixedUpdate()
     {
         this.Timing();
     }
+    protected virtual void Update()
+    {
+        
+    }
     protected virtual void Timing()
     {
-        if (this.isRead) return;
+        if (this.isReady) return;
         this.timer += Time.fixedDeltaTime;
         if (this.timer < this.delay) return;
-        this.isRead = true;
+        this.isReady = true;
     }
     protected override void LoadComponent()
     {
@@ -37,6 +41,6 @@ public abstract class BaseAbility : SaiMonoBehavior
     protected virtual void Active()
     {
         this.timer = 0;
-        this.isRead = false;
+        this.isReady = false;
     }
 }

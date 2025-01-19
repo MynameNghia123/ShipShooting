@@ -10,8 +10,8 @@ public class Inventory : SaiMonoBehavior
     protected override void Start()
     {
         base.Start();
-        this.AddItem(ItemCode.IronOre, 14);
-        this.AddItem(ItemCode.GoldOre, 14);
+        //this.AddItem(ItemCode.IronOre, 14);
+        //this.AddItem(ItemCode.GoldOre, 14);
 
     }
 

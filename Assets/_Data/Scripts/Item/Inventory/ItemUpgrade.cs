@@ -10,9 +10,9 @@ public class ItemUpgrade : InventoryAbstract
     protected override void Start()
     {
         base.Start();
-        Invoke(nameof(Test), 1f);
-        Invoke(nameof(Test), 2f);
-        Invoke(nameof(Test), 3f);
+        //Invoke(nameof(Test), 1f);
+        //Invoke(nameof(Test), 2f);
+        //Invoke(nameof(Test), 3f);
 
 
     }
