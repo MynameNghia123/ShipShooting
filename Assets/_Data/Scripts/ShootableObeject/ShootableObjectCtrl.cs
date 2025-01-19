@@ -15,6 +15,9 @@ public abstract class ShootableObjectCtrl : SaiMonoBehavior
     public ObjectShooting ObjectShooting => objectShooting;
     [SerializeField] protected ObjectLookAtTarget objectLookAtTarget;
     public ObjectLookAtTarget ObjectLookAtTarget => objectLookAtTarget;
+
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -23,6 +26,13 @@ public abstract class ShootableObjectCtrl : SaiMonoBehavior
         this.LoadSO();
         this.LoadObjectShooting();
         this.LoadObjectLookatTarget();
+        this.LoadSpawner();
+    }
+    protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + ":LoadComponet", gameObject);
     }
     protected virtual void LoadObjectLookatTarget()
     {
@@ -51,7 +61,7 @@ public abstract class ShootableObjectCtrl : SaiMonoBehavior
     protected virtual void LoadSO()
     {
         if (this.shootableObject != null) return;
-        string resPath = "ShootableObject/" + this.GetObjectTypeString()+"/" + transform.name;
+        string resPath = "ShootableObject/" + this.GetObjectTypeString() +"/" + transform.name;
         this.shootableObject = Resources.Load<ShootableObjectSO>(resPath);
         Debug.LogWarning(transform.name + ": LoadJunkSO", gameObject);
     }

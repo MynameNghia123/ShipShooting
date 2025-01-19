@@ -9,4 +9,5 @@ public enum ObjectType
     Enemy = 1,
     Junk = 2,
     Boss = 3,
+    Ship = 4,
 }

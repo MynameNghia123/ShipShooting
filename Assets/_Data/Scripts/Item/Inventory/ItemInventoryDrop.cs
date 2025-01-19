@@ -22,7 +22,7 @@ public class ItemInventoryDrop : InventoryAbstract
         Vector3 pos = transform.position;
         pos.x += 1;
         Quaternion ros = transform.rotation;
-        ItemDropSpawner.Instance.Drop(itemInventory, pos, ros);
+        ItemDropSpawner.Instance.DropFromInventory(itemInventory, pos, ros);
         this.inventory.Items.Remove(itemInventory);
     }
 }

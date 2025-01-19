@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectAppearingWithoutShoot : ShootableObjectAbtract, IObjectAppearingObserver
@@ -40,5 +41,6 @@ public class ObjectAppearingWithoutShoot : ShootableObjectAbtract, IObjectAppear
         this.ShootableObjectCtrl.ObjectShooting.gameObject.SetActive(true);
         this.ShootableObjectCtrl.ObjectLookAtTarget.gameObject.SetActive(true);
 
+        this.shootableObjectCtrl.Spawner.Hold(transform.parent);
     }
 }

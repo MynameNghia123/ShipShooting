@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipCtrl : SaiMonoBehavior
+public class ShipCtrl : AbilityObjectCtrl
 {
     [SerializeField] protected Inventory inventory;
     public Inventory Inventory => inventory;
+
+    protected override string GetObjectTypeString()
+    {
+        return ObjectType.Ship.ToString();
+    }
 
     protected override void LoadComponent()
     {
